@@ -1,0 +1,111 @@
+# Task 1: Check the relation for a four-digit number
+def check_relation(number):
+    # Extract the digits from the number
+    first_digit, second_digit, third_digit, last_digit = map(int, str(number))
+    return "YES" if first_digit + last_digit == second_digit - third_digit else "NO"
+
+
+# Task 2: Determine if a user is allowed to access an Internet resource
+def check_access(age):
+    return "Access allowed" if age >= 18 else "Access denied"
+
+
+# Task 3: Check if three numbers form an arithmetic progression
+def is_arithmetic_progression(a, b, c):
+    return "YES" if b - a == c - b else "NO"
+
+
+# Task 4: Check if a rook can move from one cell to another
+def can_rook_move(x1, y1, x2, y2):
+    return "YES" if x1 == x2 or y1 == y2 else "NO"
+
+
+# Task 5: Check if a king can move from one cell to another
+def can_king_move(x1, y1, x2, y2):
+    return "YES" if abs(x1 - x2) <= 1 and abs(y1 - y2) <= 1 else "NO"
+
+
+# Task 6: Find the average of the largest numbers
+def find_average_of_largest(a, b, c):
+    return max(min(a, b), min(b, c), min(c, a))
+
+
+# Task 7: Determine the number of days in a month
+def days_in_month(month):
+    return 31 if month in [1, 3, 5, 7, 8, 10, 12] else (28 if month == 2 else 30)
+
+
+# Task 8: Determine the weight category of a boxer
+def determine_weight_category(weight):
+    if weight <= 60:
+        return "Light weight"
+    if weight <= 64:
+        return "First welterweight"
+    return "Welterweight"
+
+
+# Task 9: Compare passwords
+def compare_passwords(password1, password2):
+    return "Password accepted" if password1 == password2 else "Password not accepted"
+
+
+# Task 10: Check if a number is even or odd
+def check_even_or_odd(number):
+    return "Even" if number % 2 == 0 else "Odd"
+
+
+# Task 11: Find the smallest of two numbers
+def find_smallest(a, b):
+    return min(a, b)
+
+
+# Task 12: Determine the age group
+def determine_age_group(age):
+    if age <= 13:
+        return "childhood"
+    if age <= 24:
+        return "youth"
+    if age <= 59:
+        return "maturity"
+    return "old age"
+
+
+# Task 13: Determine the type of a triangle
+def determine_triangle_type(a, b, c):
+    if a == b == c:
+        return "Equilateral"
+    if a == b or b == c or a == c:
+        return "Isosceles"
+    return "Versatile"
+
+
+# Dictionary to map task numbers to functions
+tasks = {
+    1: check_relation,
+    2: check_access,
+    3: is_arithmetic_progression,
+    4: can_rook_move,
+    5: can_king_move,
+    6: find_average_of_largest,
+    7: days_in_month,
+    8: determine_weight_category,
+    9: compare_passwords,
+    10: check_even_or_odd,
+    11: find_smallest,
+    12: determine_age_group,
+    13: determine_triangle_type,
+}
+
+# Input for task number
+task_number = int(input("Enter the task number (1-13): "))
+
+if task_number in tasks:
+    # Get the corresponding function and input values from the user
+    function = tasks[task_number]
+    input_values = map(int, input("Enter the input values: ").split())
+
+    # Call the function and print the result
+    result = function(*input_values)
+    print(result)
+else:
+    print("Invalid task number. Please enter a number between 1 and 13.")
